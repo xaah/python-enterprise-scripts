@@ -5,7 +5,6 @@ import urllib.request
 import urllib.parse
 import base64
 import zlib
-#import threading
 import json
 import sys
 import ssl
@@ -28,10 +27,6 @@ HEADERS = { 'Accept': 'application/json',
             'Accept-Encoding' : 'gzip',
             'Authorization' : (('%s:%s' % (UN, PWD)).replace('\n', '')).encode()
             }
-
-#print_lock = Lock()
-#err_lock = Lock()
-
 
 # Create Endpoint, Add Credentials, and Connect to the Stream
 def getStream():
