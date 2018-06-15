@@ -12,12 +12,13 @@ PWD = ''
 
 # Insert Your Account Name and Stream Label Into the URL
 base_url = 'https://gnip-api.gnip.com/historical/powertrack/accounts/<INSERT_ACCOUNT_NAME_HERE>/publishers/twitter/jobs/<JOB_UUID>.json'
+headers = {"status":"accept"}
 
 # Create URL Structure
 class RequestWithMethod(urllib.request.Request):
     def __init__(self, base_url, method, headers={}):
         self._method = method
-        urllib.request.Request.__init__(self, base_url)
+        urllib.request.Request.__init__(self, base_url, headers)
     def get_method(self):
         if self._method:
             return self._method
