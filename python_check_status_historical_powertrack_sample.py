@@ -44,5 +44,5 @@ def make_request(job_endpoint):
     except urllib.request.HTTPError as error:
         print("ERROR: %s" % error)
 
-# Make the Request by Passing in Job Endpoint
+# Make the Request
 make_request(job_endpoint)
