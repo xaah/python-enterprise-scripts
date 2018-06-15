@@ -36,16 +36,16 @@ def create_rules_endpoint():
     return final_url
 
 #Take in the Endpoint and Make the Request
-def make_request(search_endpoint):
+def make_request(job_endpoint):
     try:
-        response = urllib.request.urlopen(search_endpoint)
+        response = urllib.request.urlopen(job_endpoint)
         response_data = response.read()
         print("RESPONSE:  %s:" % response_data)
     except urllib.request.HTTPError as error:
         print("ERROR: %s" % error)
 
-# Create the Endpoint Variable w/ Sample Query Keyword
-search_endpoint = create_rules_endpoint()
+# Create the Endpoint
+job_endpoint = create_rules_endpoint()
 
-# Make the Request by Passing in Search Endpoint
-make_request(search_endpoint)
+# Make the Request
+make_request(job_endpoint)

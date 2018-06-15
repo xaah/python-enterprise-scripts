@@ -32,7 +32,7 @@ def accept_job_endpoint():
     final_url.add_header('Authorization', 'Basic %s' % base.decode('ascii'))   
     return final_url
 
-# Create the Endpoint Variable w/ Sample Query Keyword
+# Create the Endpoint
 job_endpoint = accept_job_endpoint()
 
 # Take in the Endpoint and Make the Request
