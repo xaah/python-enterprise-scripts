@@ -45,7 +45,7 @@ def getStream():
             return
         processData(tmp)
 
-# Process and print the data returned to you via the getStream function
+# Print the data returned to you and write it to a CSV file
 def processData(data):
     for rec in [x.strip() for x in data.splitlines(keepends=False) if x.strip() != '']:
         try:
