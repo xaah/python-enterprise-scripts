@@ -12,7 +12,7 @@ PWD = ''
 
 # Insert Your Account Name and Stream Label Into the URL
 base_url = 'https://gnip-api.gnip.com/historical/powertrack/accounts/<INSERT_ACCOUNT_NAME_HERE>/publishers/twitter/jobs.json'
-headers = {"publisher":"Twitter","dataFormat":"activity_streams","fromDate":"201301010000","toDate":"201301010001","title":"my_job12","rules":[{"value":"dogs are cool"}]}
+headers = {"publisher":"Twitter","dataFormat":"original","fromDate":"201301010000","toDate":"201301010001","title":"my_job12","rules":[{"value":"dogs are cool"}]}
 
 # Create URL Structure
 class RequestWithMethod(urllib.request.Request):
