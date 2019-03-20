@@ -25,7 +25,7 @@ class RequestWithMethod(urllib.request.Request):
 			return urllib.request.Request.get_method(self)
 
 # Create Endpoint and Add Credentials
-def create_rule_endpoint():
+def delete_rule_endpoint():
 	# Create sample rule with rule tag
 	rule = 'coffee'
 	tag = 'coffee'
@@ -48,7 +48,7 @@ def post_rule(rules_endpoint):
 		print("ERROR: %s" % e.decode('ascii'))
 
 # Set the Rule Endpoint to a Variable
-post_rules_endpoint = create_rule_endpoint()
+post_rules_endpoint = delete_rule_endpoint()
 
 # Make the Request by Passing in Rule Endpoint
 post_rule(post_rules_endpoint)
