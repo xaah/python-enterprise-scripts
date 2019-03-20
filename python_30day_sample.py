@@ -18,17 +18,18 @@ class RequestWithMethod(urllib.request.Request):
 	def __init__(self, base_url, method, headers={}):
 		self._method = method
 		urllib.request.Request.__init__(self, base_url, headers)
-	def get_method(self):
+	def post_method(self):
 		if self._method:
 			return self._method
 		else:
-			return urllib.request.Request.get_method(self)
+			return urllib.request.Request.post_method(self)
 
 #Create Endpoint & Add Credentials
-def create_rules_endpoint(query):
-		new_url = base_url + query
+def create_url(query):
 		base64string = ('%s:%s' % (UN, PWD)).replace('\n', '')
 		base = base64.b64encode(base64string.encode('ascii'))
+		encoded_query = urllib.parse.urlencode({'query' : '{query}'})
+		new_url = base_url + encoded_query
 		final_final_url = urllib.request.Request(new_url)
 		final_final_url.add_header('Authorization', 'Basic %s' % base.decode('ascii'))
 		return final_final_url
@@ -49,8 +50,8 @@ def handle_response(data):
 		tweet_text = tweet['text']
 		print("TWEET_TEXT:  %s:" % tweet_text)
 
-# Create the Endpoint Variable w/ Sample Query Keyword
-search_endpoint = create_rules_endpoint('coffee')
+# Create the Endpoint Variable w/ Sample Query
+search_endpoint = create_url('(coffee OR Tea) (pizza OR bagel)')
 
 # Make the Request by Passing in Search Endpoint
 make_request(search_endpoint)
