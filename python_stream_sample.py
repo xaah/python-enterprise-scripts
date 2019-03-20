@@ -1,4 +1,3 @@
-
 # Sample Python Script for Connecting to the PowerTrack Streaming (with Python 3)
 
 import urllib.request
@@ -12,7 +11,7 @@ import certifi
 import csv
 
 # Set Chunksize, Keepalive, and Newlines Below
-CHUNKSIZE = 4*1024
+CHUNKSIZE = 10000
 GNIPKEEPALIVE = 30  # seconds
 NEWLINE = '\r\n'
 
