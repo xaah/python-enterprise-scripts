@@ -28,7 +28,7 @@ class RequestWithMethod(urllib.request.Request):
 def create_url(query):
 		base64string = ('%s:%s' % (UN, PWD)).replace('\n', '')
 		base = base64.b64encode(base64string.encode('ascii'))
-		encoded_query = urllib.parse.urlencode({'query' : '{query}'})
+		encoded_query = urllib.parse.urlencode({'query' : query})
 		new_url = base_url + encoded_query
 		final_final_url = urllib.request.Request(new_url)
 		final_final_url.add_header('Authorization', 'Basic %s' % base.decode('ascii'))
@@ -50,8 +50,8 @@ def handle_response(data):
 		tweet_text = tweet['text']
 		print("TWEET_TEXT:  %s:" % tweet_text)
 
-# Create the Endpoint Variable w/ Sample Query
-search_endpoint = create_url('(coffee OR Tea) (pizza OR bagel)')
+# Create the Endpoint Variable w/ Sample Query Keyword
+search_endpoint = create_url('(sports OR news OR technology) today')
 
 # Make the Request by Passing in Search Endpoint
 make_request(search_endpoint)
