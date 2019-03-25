@@ -48,7 +48,7 @@ def getStream():
 def processData(data):
     for rec in [x.strip() for x in data.splitlines(keepends=False) if x.strip() != '']:
         try:
-            with open("TweetsFromPowerTrack.csv", "a") as file:
+            with open("TweetsFromStream.csv", "a") as file:
                     json_data = json.dumps([rec.decode()])
                     data = json.loads(json_data)
                     writer = csv.writer(file)
