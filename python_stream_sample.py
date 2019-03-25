@@ -1,4 +1,4 @@
-# Sample Python Script for Connecting to the PowerTrack Streaming (with Python 3)
+# Sample Python Script for Connecting to PowerTrack or Decahose (with Python 3)
 
 import urllib.request
 import urllib.parse
