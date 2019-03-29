@@ -1,4 +1,3 @@
-
 # Sample Python Script for Creating a New Job with the Historical PowerTrack Search API (with Python 3)
 
 import base64
