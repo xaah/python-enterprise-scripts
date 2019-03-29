@@ -33,7 +33,7 @@ def create_rule_endpoint():
 	final_url.add_header('Authorization', 'Basic %s' % base.decode('ascii'))
 	return final_url
 
-# Take in the Endpoint and Make the HTTP Request
+# Take in the Endpoint and Make the Request
 def post_rule(rules_endpoint):
 	try:
 		response = urllib.request.urlopen(rules_endpoint)
