@@ -18,37 +18,30 @@ class RequestWithMethod(urllib.request.Request):
 	def __init__(self, base_url, method, headers={}):
 		self._method = method
 		urllib.request.Request.__init__(self, base_url, headers)
-	def get_method(self):
+
+	def post_method(self):
 		if self._method:
 			return self._method
 		else:
-			return urllib.request.Request.get_method(self)
+			return urllib.request.Request.post_method(self)
 
-# Create Endpoint and Add Credentials
-def delete_rule_endpoint():
-	# Create sample rule with rule tag
-	rule = 'coffee'
-	tag = 'coffee'
-	values = ('{"rules": [{"value":"' + rule + '","tag":"' + tag + '"}]}').encode()
-
-	# Attach password and username to URL
-	base64string = ('%s:%s' % (UN, PWD)).replace('\n', '')
-	base = base64.b64encode(base64string.encode('ascii'))
-	final_url = urllib.request.Request(url=base_url, data=values)
-	final_url.add_header('Authorization', 'Basic %s' % base.decode('ascii'))
-	return final_url
-
-# Take in the Endpoint and Make the HTTP Request
-def post_rule(rules_endpoint):
+def delete_rule():
 	try:
-		response = urllib.request.urlopen(rules_endpoint)
-		response_data = response.read()
-		print("RESPONSE: %s" % response_data.decode('ascii'))
-	except urllib.request.HTTPError as e:
-		print("ERROR: %s" % e.decode('ascii'))
+		delete_rules = ({'rules':[{'value':'testrule'}]})
+		encoded_query = json.dumps(delete_rules).encode('ascii')
 
-# Set the Rule Endpoint to a Variable
-post_rules_endpoint = delete_rule_endpoint()
+		base64string = ('%s:%s' % (UN, PWD)).replace('\n', '')
+		baseauth = base64.b64encode(base64string.encode('ascii'))
+
+		# Format the request url and add basic authorization
+		final_url = urllib.request.Request(base_url)
+		final_url.add_header('Authorization', 'Basic %s' % baseauth.decode('ascii'))
+		response = urllib.request.urlopen(final_url, encoded_query)
+		response_data = response.read()
+		print(response_data)
+	
+	except urllib.request.HTTPError as e:
+		print(e.read())
 
 # Make the Request by Passing in Rule Endpoint
-post_rule(post_rules_endpoint)
+delete_rule()
