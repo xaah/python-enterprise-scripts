@@ -35,7 +35,6 @@ def post_rule():
 		# Format the request url and add basic authorization
 		final_url = urllib.request.Request(base_url)
 		final_url.add_header('Authorization', 'Basic %s' % baseauth.decode('ascii'))
-		print(encoded_query)
 		response = urllib.request.urlopen(final_url, encoded_query)
 		response_data = response.read()
 		print(response_data)
